@@ -10,9 +10,7 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 // the whole app is wrapped in AuthContextProvider so that the whole app can access the AuthContext
 // i.e the functions that is handling the authentication
 root.render(
-  <AuthContextProvider>
     <App />
-  </AuthContextProvider>
 );
 
 // If you want to start measuring performance in your app, pass a function

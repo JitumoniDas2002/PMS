@@ -29,10 +29,6 @@ const theme = createTheme();
 
 export default function SignUp() {
   
-  const { createUser, user } = UserAuth();
-
-  console.log("this is user: ", user)
-  
   const [firstName, setFirstName] = useState('')
   const [lastName, setLastName] = useState('')
   const [emailAddress, setEmailAddress] = useState('')
