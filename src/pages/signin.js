@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { useState, useEffect } from 'react';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -12,6 +12,8 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import axios from 'axios';
+
 
 function Copyright(props) {
   return (
@@ -29,13 +31,37 @@ function Copyright(props) {
 const theme = createTheme();
 
 export default function SignIn() {
-  const handleSubmit = (event) => {
+
+  const [emailAddress, setEmailAddress] = useState('')
+  const [password, setPassword] = useState('')
+
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-    });
+    
+    const user = {
+      email: emailAddress,
+      password: password
+    };
+    
+    const headers = {
+      'Content-Type': 'application/json',
+    }
+
+    try {
+      // axios call -- send and receive data
+      axios.post('http://localhost:8000/login', user, { headers })
+        .then((response) => {
+          console.log(response);
+          // save token in browser local storage
+          localStorage.setItem('token', response.data.token);
+          // reroute to login page
+        }).catch((error) => {
+          console.log(error);
+        })
+
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   return (
@@ -56,7 +82,7 @@ export default function SignIn() {
           <Typography component="h1" variant="h5">
             Sign in
           </Typography>
-          <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
+          <Box noValidate sx={{ mt: 1 }}>
             <TextField
               margin="normal"
               required
@@ -66,6 +92,8 @@ export default function SignIn() {
               name="email"
               autoComplete="email"
               autoFocus
+              value={emailAddress}
+              onChange={(event) => setEmailAddress(event.target.value)}
             />
             <TextField
               margin="normal"
@@ -76,16 +104,18 @@ export default function SignIn() {
               type="password"
               id="password"
               autoComplete="current-password"
+              value={password}
+              onChange={(event) => setPassword(event.target.value)}
             />
             <FormControlLabel
               control={<Checkbox value="remember" color="primary" />}
               label="Remember me"
             />
             <Button
-              type="submit"
               fullWidth
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
+              onClick={handleSubmit}
             >
               Sign In
             </Button>
