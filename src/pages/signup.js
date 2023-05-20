@@ -13,6 +13,7 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { UserAuth } from '../contexts/AuthContext';
+import axios from 'axios';
 
 function Copyright(props) {
   return (
@@ -35,7 +36,35 @@ export default function SignUp() {
   const [password, setPassword] = useState('')  
 
   const handleSubmit = (event) => {
+    event.preventDefault();
     
+    const user = {
+      first_name: firstName,
+      last_name: lastName,
+      email: emailAddress,
+      password: password
+    };
+    
+    const headers = {
+      'Content-Type': 'application/json',
+    }
+
+    try {
+      // axios call -- send and receive data
+      axios.post('http://localhost:8000/register', user, { headers })
+        .then((response) => {
+          console.log(response);
+          // save token in browser local storage
+          localStorage.setItem('token', response.data.token);
+          // reroute to login page
+        }).catch((error) => {
+          console.log(error);
+        })
+
+    } catch (err) {
+      console.log(err);
+    }
+
   }
 
   return (
@@ -57,7 +86,7 @@ export default function SignUp() {
             Sign up
           </Typography>
           {firstName}
-          <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
+          <Box sx={{ mt: 3 }}>
             <Grid container spacing={2}>
               <Grid item xs={12} sm={6}>
                 <TextField
@@ -111,10 +140,10 @@ export default function SignUp() {
               </Grid>
             </Grid>
             <Button
-              type='submit'
               fullWidth
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
+              onClick={handleSubmit}
             >
               Sign Up
             </Button>
