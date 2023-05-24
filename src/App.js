@@ -12,6 +12,7 @@ import Dashboard from "./pages/dashboard";
 import Navbaar from "./components/Navbaar";
 import AddPublication from "./pages/add_publications";
 import DeletePublication from "./pages/delete_publications";
+import ListPublication from "./pages/list_publications";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
         <Route path="/signup" element={<SignUp />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/add-publications" element={<AddPublication />} />
+        <Route path="/list-publications" element={<ListPublication />} />
         <Route path="/delete-publications" element={<DeletePublication />} />
       </Routes>
     </Router>

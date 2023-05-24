@@ -3,7 +3,7 @@ import React from "react";
 export default function PublicationTable() {
     return (
         <div>
-            <table class="table">
+            <table class="table table-striped">
                 <thead>
                     <tr>
                         <th scope="col">Sl No.</th>
@@ -20,7 +20,7 @@ export default function PublicationTable() {
                         <td>Otto</td>
                         <td>@mdo</td>
                         <td>
-                            <button className="btn btn-primary">
+                            <button className="btn btn-danger">
                                 Delete
                             </button>
                         </td>
@@ -31,7 +31,7 @@ export default function PublicationTable() {
                         <td>Thornton</td>
                         <td>@fat</td>
                         <td>
-                        <button className="btn btn-primary">
+                        <button className="btn btn-danger">
                                 Delete
                             </button>
                         </td>

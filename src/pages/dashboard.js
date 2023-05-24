@@ -16,7 +16,7 @@ export default function Dashboard() {
                     <i></i>
                     <h5 className="card-title">Books Published</h5>
                     <p className="card-text">10</p>
-                    <a href="#" className="btn btn-primary">Go there</a>
+                    <a href="/list-publications" className="btn btn-primary">Go there</a>
                 </div>
             </div>
             <div className="card col-3 mx-5">
