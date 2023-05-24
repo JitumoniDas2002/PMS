@@ -9,6 +9,7 @@ export default function AddPublication() {
     const [co_authors, setCoAuthors] = useState([]);
     const [file, setFile] = useState("");
     const [description, setDescription] = useState("");
+    const user_id = localStorage.getItem("user_id");
 
 
     const handleAddCoAuthor = (event) => {
@@ -20,6 +21,7 @@ export default function AddPublication() {
     }
 
     const publication = {
+        user_id: user_id,
         title: title,
         author: author,
         co_authors: co_authors,

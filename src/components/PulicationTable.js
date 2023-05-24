@@ -1,6 +1,10 @@
 import React from "react";
+import formatDate from "../utils/date-format";
 
-export default function PublicationTable() {
+export default function PublicationTable(props) {
+
+    console.log(props.publications)
+
     return (
         <div>
             <table class="table table-striped">
@@ -14,28 +18,37 @@ export default function PublicationTable() {
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
-                        <td>
-                            <button className="btn btn-danger">
-                                Delete
-                            </button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th scope="row">2</th>
-                        <td>Jacob</td>
-                        <td>Thornton</td>
-                        <td>@fat</td>
-                        <td>
-                        <button className="btn btn-danger">
-                                Delete
-                            </button>
-                        </td>
-                    </tr>
+                    {
+                        // map over the publications array and display each publication
+                        props.publications.map((publication, index) => {
+                            return (
+                                <tr key={index}>
+                                    <th scope="row">{index + 1}</th>
+                                    <td>{publication.title}</td>
+                                    <td>
+                                        {
+                                            formatDate(Date(publication.published_date))
+                                        }
+                                    </td>
+                                    <td>
+                                        {
+                                            publication.co_authors.map((coAuthor, index) => {
+                                                return (
+                                                    <p>{coAuthor}</p>
+                                                )
+                                            })
+                                        
+                                        }
+                                    </td>
+                                    <td>
+                                        <button className="btn btn-danger">
+                                            Delete
+                                        </button>
+                                    </td>
+                                </tr>
+                            )
+                        })
+                    }
                 </tbody>
             </table>
         </div>

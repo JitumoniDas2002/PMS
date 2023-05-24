@@ -55,6 +55,7 @@ export default function SignUp() {
         .then((response) => {
           console.log(response);
           // save token in browser local storage
+          localStorage.setItem('user_id', response.data.user_id);
           localStorage.setItem('token', response.data.token);
           // reroute to login page
         }).catch((error) => {
