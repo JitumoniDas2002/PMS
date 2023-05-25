@@ -3,11 +3,9 @@ import formatDate from "../utils/date-format";
 
 export default function PublicationTable(props) {
 
-    console.log(props.publications)
-
     return (
         <div>
-            <table class="table table-striped">
+            <table className="table table-striped">
                 <thead>
                     <tr>
                         <th scope="col">Sl No.</th>
@@ -34,14 +32,14 @@ export default function PublicationTable(props) {
                                         {
                                             publication.co_authors.map((coAuthor, index) => {
                                                 return (
-                                                    <p>{coAuthor}</p>
+                                                    <p key={index}>{coAuthor}</p>
                                                 )
                                             })
                                         
                                         }
                                     </td>
                                     <td>
-                                        <button className="btn btn-danger">
+                                        <button className="btn btn-danger" onClick={() => props.handlePublicationDelete(publication.publication_id)}>
                                             Delete
                                         </button>
                                     </td>

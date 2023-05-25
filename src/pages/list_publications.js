@@ -30,12 +30,27 @@ export default function DeletePublication() {
 
     }, [])
 
+    const handlePublicationDelete = (publicationId) => {
+        axios.delete(`http://localhost:8000/delete-publication/${publicationId}`, {
+            headers: {
+                'Content-Type': 'application/json',
+            }
+        }).then((response) => {
+            console.log(response.data);
+            // this will refresh the page
+            window.location.href = '/list-publications';
+        })
+    }
+
     return (
         <div className="d-flex flex-column align-items-center">
             <h1 className="mb-3">List Publications</h1>
             <div className="card col-8">
                 <div className="card-body">      
-                    <PublicationTable publications={publications} />
+                    <PublicationTable 
+                        publications={publications}
+                        handlePublicationDelete={handlePublicationDelete}
+                    />
                 </div>
             </div>
         </div>
