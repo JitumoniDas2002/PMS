@@ -26,6 +26,7 @@ export default function AddPublication() {
         author: author,
         co_authors: co_authors,
         file: file,
+        description: description
     }
 
     const handleSubmit = (event) => {

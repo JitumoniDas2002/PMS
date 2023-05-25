@@ -13,13 +13,15 @@ import Navbaar from "./components/Navbaar";
 import AddPublication from "./pages/add_publications";
 import DeletePublication from "./pages/delete_publications";
 import ListPublication from "./pages/list_publications";
+import Home from "./pages/home";
 
 function App() {
   return (
     <Router>
       <Navbaar />
       <Routes>
-        <Route path="/" element={<Dashboard />} />
+        <Route path="/" element={<Home/>} />
+        <Route path="/home" element={<Home />} />
         <Route path="/login" element={<SignIn />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/dashboard" element={<Dashboard />} />
