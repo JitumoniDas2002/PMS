@@ -60,9 +60,9 @@ const Home = () => {
         </Button>
       </div>
 
-      <Grid container spacing={3}>
+      <Grid container spacing={1}>
         {publications.map((publication) => (
-          <Grid item key={publication.id} xs={12} sm={6} md={4}>
+          <Grid item key={publication.id} xs={12} sm={12} md={7}>
             <div className="card">
               <div className="card-body">
                 <h5 className="card-title">{publication.title}</h5>
