@@ -1,6 +1,15 @@
 import React from "react";
 
 export default function Navbaar() {
+
+    const handleLogOut = async () => {
+        // remove token from local storage
+        localStorage.removeItem('token');
+        localStorage.removeItem('user_id');
+        // redirect to login page
+        window.location.href = '/home';
+    }
+
     return (
         <div>
             <nav className="navbar navbar-expand-lg bg-body-tertiary mb-5">
@@ -24,6 +33,11 @@ export default function Navbaar() {
                                 <ul className="dropdown-menu">
                                     <li><a className="dropdown-item" href="/login">Login</a></li>
                                     <li><a className="dropdown-item" href="/signup">Sign Up</a></li>
+                                    <li><a className="dropdown-item">
+                                        <button onClick={handleLogOut} className="bg-transparent border-0">
+                                            Logout
+                                        </button>
+                                    </a></li>
                                     <li><hr className="dropdown-divider" /></li>
                                     <li><a className="dropdown-item" href="#">Something else here</a></li>
                                 </ul>

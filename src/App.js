@@ -14,6 +14,7 @@ import AddPublication from "./pages/add_publications";
 import DeletePublication from "./pages/delete_publications";
 import ListPublication from "./pages/list_publications";
 import Home from "./pages/home";
+import Logout from "./pages/logout";
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
         <Route path="/add-publications" element={<AddPublication />} />
         <Route path="/list-publications" element={<ListPublication />} />
         <Route path="/delete-publications" element={<DeletePublication />} />
+        <Route path="/logout" element={<Logout />} />
       </Routes>
     </Router>
   );
