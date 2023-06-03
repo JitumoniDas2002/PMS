@@ -36,3 +36,11 @@
     transform: rotate(360deg);
   }
 }
+
+.navbaar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 6px 18px 6px 18px;
+  box-shadow: 0 2px 0 0 #ebebed;
+}
