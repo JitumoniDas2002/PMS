@@ -17,7 +17,7 @@ export default function Navbaar() {
 
     return (
         <div>
-            <nav className="navbaar">
+            <nav className="navbaar mb-3">
           <div
             className="d-flex flex-row justify-content-between align-items-center w-100"
           >

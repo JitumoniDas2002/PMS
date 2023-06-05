@@ -41,6 +41,8 @@ export default function AddPublication() {
             axios.post('http://localhost:8000/add-publications', publication, { headers })
                 .then((response) => {
                     console.log(response);
+                    alert("Publication Added Successfully");
+                    window.location.href = "/dashboard";
                 }).catch((error) => {
                     console.log(error);
                 })
