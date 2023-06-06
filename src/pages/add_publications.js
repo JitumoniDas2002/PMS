@@ -20,6 +20,15 @@ export default function AddPublication() {
 
     }
 
+    const handleFileUpload = (event) => {
+        event.preventDefault();
+        console.log("File Upload")
+
+        const file = event.target.files[0];
+        console.log(file);
+        setFile(file);
+    }
+
     const publication = {
         user_id: user_id,
         title: title,
@@ -29,6 +38,8 @@ export default function AddPublication() {
         description: description,
         published_date: new Date()
     }
+
+    console.log(publication);
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -99,10 +110,7 @@ export default function AddPublication() {
                         </div>
                         <div className="form-floating col-12">
                             <input type="file" className="form-control" placeholder="JD" 
-                                value={file}
-                                onChange={(event) => {
-                                    setFile(event.target.value)
-                                }}
+                                onChange={handleFileUpload}
                             />
                             <label>Upload File</label>
                         </div>
