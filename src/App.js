@@ -18,6 +18,7 @@ import Logout from "./pages/logout";
 import AdminPage from "./pages/admin";
 import AdminDashboard from "./pages/admin-dashboard";
 import ListUsers from "./pages/list-publishers";
+import AdminPublications from "./pages/list-users-publications";
 
 function App() {
   return (
@@ -32,9 +33,10 @@ function App() {
         <Route path="/add-publications" element={<AddPublication />} />
         <Route path="/list-publications" element={<ListPublication />} />
         <Route path="/delete-publications" element={<DeletePublication />} />
-        <Route path="/admin" element={<AdminPage />} />
+        {/* <Route path="/admin" element={<AdminPage />} /> */}
         <Route path="/admin/dashboard" element={<AdminDashboard />} />
         <Route path="/admin/list-publishers" element={<ListUsers />} />
+        <Route path="/admin/list-user-publications" element={<AdminPublications />} />
         <Route path="/logout" element={<Logout />} />
       </Routes>
     </Router>

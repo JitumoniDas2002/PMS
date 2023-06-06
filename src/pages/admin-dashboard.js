@@ -25,7 +25,7 @@ const AdminDashboard = () => {
                         <Card.Text>
                             Show User Publications
                         </Card.Text>
-                        <Button href="/admin/dashboard/list-publications">List Publications</Button>
+                        <Button href="/admin/list-user-publications">List Publications</Button>
                     </Card.Body>
                 </Card>
                 <Card className='m-3' style={{ width: '18rem' }}>

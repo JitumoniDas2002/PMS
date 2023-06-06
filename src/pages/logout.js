@@ -7,7 +7,7 @@ export default function Logout() {
         localStorage.removeItem('token');
         localStorage.removeItem('user_id');
         // redirect to login page
-        window.location.href = '/signin';
+        window.location.href = '/';
     }
 
     return (
