@@ -57,7 +57,7 @@ export default function Navbaar() {
                 <>
           
                 <li className="col-sm-4 small">
-                <a href="/admin-login" className="text-decoration-none text-dark">
+                <a href="/admin/login" className="text-decoration-none text-dark">
                   Admin
                 </a>
               </li>

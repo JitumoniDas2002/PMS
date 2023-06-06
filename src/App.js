@@ -19,6 +19,7 @@ import AdminPage from "./pages/admin";
 import AdminDashboard from "./pages/admin-dashboard";
 import ListUsers from "./pages/list-publishers";
 import AdminPublications from "./pages/list-users-publications";
+import AdminSignIn from "./pages/admin-login";
 
 function App() {
   return (
@@ -37,6 +38,7 @@ function App() {
         <Route path="/admin/dashboard" element={<AdminDashboard />} />
         <Route path="/admin/list-publishers" element={<ListUsers />} />
         <Route path="/admin/list-user-publications" element={<AdminPublications />} />
+        <Route path="/admin/login" element={<AdminSignIn />} />
         <Route path="/logout" element={<Logout />} />
       </Routes>
     </Router>

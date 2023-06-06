@@ -6,13 +6,13 @@ import formatDate from '../utils/date-format';
 const ListUsers = () => {
 
    useEffect(() => {
-    const token = localStorage.getItem('token');
+    const token = localStorage.getItem('admin-token');
         if (!token) {
             // redirect to login page
             window.location.href = '/login';
         }
         
-        const user_id = localStorage.getItem('user_id');
+        const admin_id = localStorage.getItem('admin_id');
         const getPublishers = async () => {
             axios.get(`http://localhost:8000/get-users/`, {
                 headers: {

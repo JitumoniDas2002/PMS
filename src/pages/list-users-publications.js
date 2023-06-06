@@ -5,6 +5,13 @@ import formatDate from '../utils/date-format';
 
 const AdminPublications = () => {
 
+    useEffect(() => {
+        if (!localStorage.getItem('admin-token') || !localStorage.getItem('admin_id')) {
+            // redirect to dashboard
+            window.location.href = '/admin/login';
+        }
+    })
+
     const [publishers, setPublishers] = useState([]);
     const [books, setBooks] = useState(null);
     const [publisherEmail, setPublisherEmail] = useState('');

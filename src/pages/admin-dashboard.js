@@ -4,6 +4,14 @@ import axios from 'axios';
 import formatDate from '../utils/date-format';
 
 const AdminDashboard = () => {
+
+    useEffect(() => {
+        if (!localStorage.getItem('admin-token') || !localStorage.getItem('admin_id')) {
+            // redirect to dashboard
+            window.location.href = '/admin/login';
+        }
+    }, [])
+
     return (
         // make two buttons with links to two diffrent pages
         <div className='d-flex flex-column w-100 justify-content-center align-items-center'>
