@@ -21,48 +21,58 @@ export default function Navbaar() {
           <div
             className="d-flex flex-row justify-content-between align-items-center w-100"
           >
-            <div className="col-1 ">
-              <a href="/home">
-                PMS
-              </a>
+            <div className="d-flex justify-content-between">
+              <div className="col-1 ">
+                <a href="/home" className="text-decoration-none text-dark">
+                  PMS
+                </a>
+              </div>
+              {
+                localStorage.getItem('token') ?
+                <div className="col-2 ">
+                <a href="/dashboard" className="text-decoration-none text-dark">
+                  Dashboard
+                </a>
+              </div>
+              :
+              null
+              }
             </div>
             <ul
               className="d-flex flex-row col-3 list-unstyled justify-content-between align-items-center m-0"
             >
-              <li className="col-sm-4 small">
-                <a href="/search" className="text-decoration-none text-dark">
-                  Search
-                </a>
-              </li>
-              <li className="col-sm-4 small">
-                <a href="/folder" className="text-decoration-none text-dark">
-                  Folders
-                </a>
-              </li>
-              <li className="col-sm-4 small">
-                <a href="/history" className="text-decoration-none text-dark">
-                  History
-                </a>
-              </li>
+              
             </ul>
             <ul
-              className="d-flex flex-row col-3 list-unstyled justify-content-between align-items-center m-0"
+              className="d-flex flex-row col-2 list-unstyled justify-content-between align-items-center m-0"
             >
-              <li className="col-sm-4 small">
+              {
+                localStorage.getItem('token') ?
+                <li className="col-sm-12 small">
+                  <a href="/logout" className="text-decoration-none text-dark">
+                    Log Out
+                  </a>
+                </li>
+                :
+                <>
+          
+                <li className="col-sm-4 small">
+                <a href="/admin-login" className="text-decoration-none text-dark">
+                  Admin
+                </a>
+              </li>
+                <li className="col-sm-4 small">
                 <a href="/login" className="text-decoration-none text-dark">
                   Login
                 </a>
               </li>
-              <li className="col-sm-4 small">
+              <li className="col-sm-4  small">
                 <a href="/signup" className="text-decoration-none text-dark">
                   Sign Up
                 </a>
               </li>
-              <li className="col-sm-4 small">
-                <a href="/logout" className="text-decoration-none text-dark">
-                  Log Out
-                </a>
-              </li>
+                </>
+              }
             </ul>
           </div>
         </nav>

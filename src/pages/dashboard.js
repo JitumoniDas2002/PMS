@@ -4,6 +4,12 @@ import axios from 'axios';
 export default function Dashboard() {
 
     useEffect(() => {
+
+        if (!localStorage.getItem('user_id') || !localStorage.getItem('token')) {
+            window.location.href = '/';
+            return
+        }
+
         const getTotalPublications = () => {
             axios.get(`http://localhost:8000/get-total-publications`)
                 .then((response) => {
@@ -24,6 +30,7 @@ export default function Dashboard() {
                     setUser(response.data);
                     setFirstName(response.data.first_name);
                     setLastName(response.data.last_name);
+                    setUserPublications(response.data.publications.length);
                 })
                 .catch((err) => {
                     console.log(err);
@@ -36,6 +43,7 @@ export default function Dashboard() {
     const [user, setUser] = useState({});
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
+    const [userPublications, setUserPublications] = useState();
 
     const updateUser = () => {
         const user_id = localStorage.getItem('user_id');
@@ -60,7 +68,7 @@ export default function Dashboard() {
                 <div className="card-body">
                     <i></i>
                     <h5 className="card-title">Total Books</h5>
-                    <p className="card-text">{publicationLength}</p>
+                    <p className="card-text">{userPublications}</p>
                     <a href="#" className="btn btn-primary">Go there</a>
                 </div>
             </div>
