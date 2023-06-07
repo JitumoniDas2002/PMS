@@ -7,7 +7,7 @@ export default function AddPublication() {
     const [title, setTitle] = useState("");
     const [author, setAuthor] = useState("");
     const [co_authors, setCoAuthors] = useState([]);
-    const [file, setFile] = useState("");
+    const [file, setFile] = useState(null);
     const [description, setDescription] = useState("");
     const user_id = localStorage.getItem("user_id");
 
@@ -20,26 +20,13 @@ export default function AddPublication() {
 
     }
 
-    const handleFileUpload = (event) => {
+    const handleFileChange = (event) => {
         event.preventDefault();
-        console.log("File Upload")
+        console.log(event.target.files[0]);
+        setFile(event.target.files[0]);
+      };
 
-        const file = event.target.files[0];
-        console.log(file);
-        setFile(file);
-    }
-
-    const publication = {
-        user_id: user_id,
-        title: title,
-        author: author,
-        co_authors: co_authors,
-        file: file,
-        description: description,
-        published_date: new Date()
-    }
-
-    console.log(publication);
+      console.log("this is file: ", file);
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -48,9 +35,23 @@ export default function AddPublication() {
             'Content-Type': 'application/json',
         }
 
+        console.log("Submit: ", file);
+
+        const formData = new FormData();
+        formData.append("user_id", user_id);
+        formData.append("title", title);
+        formData.append("author", author);
+        formData.append("co_authors", co_authors);
+        formData.append("file", file);
+        formData.append("description", description);
+        formData.append("published_date", new Date());
+
+        console.log(formData);
+
+
         try {
             // axios call -- send and receive data
-            axios.post('http://localhost:8000/add-publications', publication, { headers })
+            axios.post('http://localhost:8000/add-publications', formData,)
                 .then((response) => {
                     console.log(response);
                     alert("Publication Added Successfully");
@@ -69,7 +70,7 @@ export default function AddPublication() {
             <h1 className="mb-3">Add Publication</h1>
             <div className="card col-5">
                 <div className="card-body" style={{backgroundColor: "#e9e9e9"}}>
-                    <form className="row g-3">
+                    <form className="row g-3" onSubmit={handleSubmit} encType="multipart/form-data">
                         <div className="form-floating col-12">
                             <input type="text" className="form-control" placeholder="Theory Of Everything" 
                                 value={title}
@@ -109,8 +110,8 @@ export default function AddPublication() {
                         <button className="btn btn-primary" onClick={handleAddCoAuthor}>Add Co-Author</button>
                         </div>
                         <div className="form-floating col-12">
-                            <input type="file" className="form-control" placeholder="JD" 
-                                onChange={handleFileUpload}
+                            <input type="file" name="file" className="form-control" placeholder="JD" 
+                                onChange={handleFileChange}
                             />
                             <label>Upload File</label>
                         </div>
@@ -124,7 +125,7 @@ export default function AddPublication() {
                             <label>Description</label>
                         </div>
                         <button className="btn btn-outline-secondary"
-                            onClick={handleSubmit}
+                            type="submit"
                         >
                             Add Publication
                         </button>

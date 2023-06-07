@@ -65,7 +65,12 @@ const Home = () => {
           <Grid item key={publication.id} xs={12} sm={12} md={7}>
             <div className="card">
               <div className="card-body">
-                <h5 className="card-title">{publication.title}</h5>
+                <div className='d-flex w-100 justify-content-between' >
+                  <h5 className="card-title">{publication.title}</h5>
+                  <button className='btn btn-primary'>
+                    <a href={`http://localhost:8000/download/${publication.file}`} className='text-decoration-none text-light'>Download</a>
+                  </button>
+                </div>
                 <h6 className="card-subtitle mb-2 text-muted">
                     {publication.author}
                 </h6>
