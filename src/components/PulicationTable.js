@@ -11,6 +11,7 @@ export default function PublicationTable(props) {
                         <th scope="col">Sl No.</th>
                         <th scope="col">Title</th>
                         <th scope="col">Date Published</th>
+                        <th scope="col">Author</th>
                         <th scope="col">Co-Author(s)</th>
                         <th scope="col"></th>
                     </tr>
@@ -28,6 +29,7 @@ export default function PublicationTable(props) {
                                             formatDate(Date(publication.published_date))
                                         }
                                     </td>
+                                    <td>{publication.author}</td>
                                     <td>
                                         {
                                             publication.co_authors.map((coAuthor, index) => {

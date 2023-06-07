@@ -59,7 +59,7 @@ export default function AdminSignIn() {
           localStorage.setItem('admin_id', response.data.admin_id);
           localStorage.setItem('admin-token', response.data.token);
           // reroute to login page
-          navigate('/admin-dashboard')
+          navigate('/admin/dashboard')
         }).catch((error) => {
           console.log(error);
         })
@@ -85,7 +85,7 @@ export default function AdminSignIn() {
             <LockOutlinedIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
-            Sign in
+            Admin Log In
           </Typography>
           <Box noValidate sx={{ mt: 1 }}>
             <TextField
